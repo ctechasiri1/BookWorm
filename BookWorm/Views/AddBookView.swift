@@ -28,6 +28,12 @@ struct AddBookView: View {
         "Thriller"
     ]
     
+    // NOTE: alternative to default values and prevents of saving if fields aren't saved
+//    var isDataEmpty: Bool {
+//        title.trimmingCharacters(in: .whitespaces).isEmpty &&
+//        author.trimmingCharacters(in: .whitespaces).isEmpty
+//    }
+    
     var body: some View {
         NavigationStack {
             Form {
@@ -53,6 +59,8 @@ struct AddBookView: View {
                         modelContext.insert(newBook)
                         dismiss()
                     }
+                    // NOTE: alternative to default values and prevents of saving if fields aren't saved
+//                    .disabled(isDataEmpty)
                 }
             }
             .navigationTitle("Add Book")
