@@ -15,13 +15,15 @@ class Book {
     var genre: String
     var review: String
     var rating: Int
+    var date: Date? = Date.now
     
-    init(title: String, author: String, genre: String, review: String, rating: Int) {
+    init(title: String, author: String, genre: String, review: String, rating: Int, date: Date?) {
         self.title = title
         self.author = author
         self.genre = genre
         self.review = review
         self.rating = rating
+        self.date = date
     }
 }
 
@@ -32,5 +34,18 @@ extension Book {
     
     var displayAuthor: String {
         author.isEmpty ? "Unknown author" : author
+    }
+    
+    static let displayDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, yyyy"
+        return formatter
+    } ()
+    
+    var displayDate: String {
+        guard let date else {
+            return ""
+        }
+        return Self.displayDateFormatter.string(from: date)
     }
 }

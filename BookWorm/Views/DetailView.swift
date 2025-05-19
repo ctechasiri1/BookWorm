@@ -33,6 +33,9 @@ struct DetailView: View {
             Text(book.displayAuthor)
                 .font(.title)
                 .foregroundStyle(.secondary)
+        
+            Text(book.displayDate)
+                .font(.subheadline)
             
             Text(book.review)
                 .padding()
@@ -66,7 +69,7 @@ struct DetailView: View {
     do {
         let config = ModelConfiguration(isStoredInMemoryOnly: true) // creates a temporary, RAM-only database
         let container = try ModelContainer(for: Book.self, configurations: config) // creates a temp SwiftData cotnainer to understand the data
-        let example = Book(title: "Test Book", author: "Test Author", genre: "Fantasy", review: "This was a great book. I really enjoyed it", rating: 4)
+        let example = Book(title: "Test Book", author: "Test Author", genre: "Fantasy", review: "This was a great book. I really enjoyed it", rating: 4, date: Date.now)
         
         return DetailView(book: example)
             .modelContainer(container)
