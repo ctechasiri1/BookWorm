@@ -24,3 +24,13 @@ class Book {
         self.rating = rating
     }
 }
+
+extension Book {
+    var displayTitle: String {
+        title.isEmpty ? "Untitled" : title
+    }
+    
+    var displayAuthor: String {
+        author.isEmpty ? "Unknown author" : author
+    }
+}

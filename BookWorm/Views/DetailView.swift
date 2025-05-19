@@ -30,7 +30,7 @@ struct DetailView: View {
                     .clipShape(.capsule)
                     .offset(x: -5, y: -5)
             }
-            Text(book.author)
+            Text(book.displayAuthor)
                 .font(.title)
                 .foregroundStyle(.secondary)
             
@@ -40,7 +40,7 @@ struct DetailView: View {
             RatingView(rating: .constant(book.rating))
                 .font(.largeTitle)
         }
-        .navigationTitle(book.title)
+        .navigationTitle(book.displayTitle)
         .navigationBarTitleDisplayMode(.inline)
         .scrollBounceBehavior(.basedOnSize)
         .alert("Delete book", isPresented: $showingDeleteAlert) {
